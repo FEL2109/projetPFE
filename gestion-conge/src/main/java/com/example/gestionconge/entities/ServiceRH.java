@@ -13,14 +13,15 @@ import lombok.*;
 @Setter
 @ToString
 @Builder
-public class ServiceRH  {
 
+public class ServiceRH  {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRh;
+    private Long idRH;
+
     private String nom;
     private String prenom;
     private String email;
-    private String motdepasse;
+    private String motDePasse;
     private String telephone;
-    private String cheminphoto;
+    private String cheminPhoto;
 }

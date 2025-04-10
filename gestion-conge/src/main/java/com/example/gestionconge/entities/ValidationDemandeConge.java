@@ -18,11 +18,11 @@ public class ValidationDemandeConge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idValidation;
+
     private LocalDate dateValidation;
 
     @Enumerated(EnumType.STRING)
     private StatutDemande statut;
-
 
     @ManyToOne
     @JoinColumn(name = "manager_id", nullable = false)

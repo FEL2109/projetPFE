@@ -1,57 +1,49 @@
 package com.example.gestionconge.web;
 
-import com.example.gestionconge.entities.DemandeConge;
-import com.example.gestionconge.services.serviceImpl.DemandeCongeImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.gestionconge.dtos.ApiResponse;
+import com.example.gestionconge.dtos.DemandeCongeDTO;
+import com.example.gestionconge.services.serviceinterface.DemandeCongeInt;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+import com.example.gestionconge.dtos.DemandeCongeDTO;
+import com.example.gestionconge.dtos.ApiResponse;
+import com.example.gestionconge.services.serviceinterface.DemandeCongeInt;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/demandesconges")
-public class DemandeCongeService {
-    @Autowired
-    private DemandeCongeImpl demandeCongeImpl;
+@RequestMapping("/api/demandes")
+public class DemandeCongeRestController {
+    private final DemandeCongeInt demandeCongeInt;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<DemandeConge> getDemandeCongeById(@PathVariable Long id) {
-        DemandeConge demandeConge = demandeCongeImpl.getById(id);
-        return demandeConge != null ? ResponseEntity.ok(demandeConge) : ResponseEntity.notFound().build();
-    }
-
-    @GetMapping
-    public List<DemandeConge> getAllDemandeConge() {
-        return demandeCongeImpl.getAllDemandeConge();
+    public DemandeCongeRestController(DemandeCongeInt demandeCongeInt) {
+        this.demandeCongeInt = demandeCongeInt;
     }
 
     @PostMapping
-    public ResponseEntity<DemandeConge> createDemandeConge(@RequestBody DemandeConge demandeConge) {
-        DemandeConge createDemandeConge = demandeCongeImpl.createDemandeConge(demandeConge);
-        return ResponseEntity.created(null).body(createDemandeConge);
+    public ApiResponse addDemande(@RequestBody DemandeCongeDTO demandeCongeDTO) {
+        return demandeCongeInt.addDemande(demandeCongeDTO);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DemandeConge> updateDemandeConge(@PathVariable Long id, @RequestBody DemandeConge demandeConge) {
-        if (demandeConge == null) {
-            return ResponseEntity.badRequest().body(null);
-        }
+    public ApiResponse updateDemande(@PathVariable Long id, @RequestBody DemandeCongeDTO demandeCongeDTO) {
+        return demandeCongeInt.updateDemande(id, demandeCongeDTO);
+    }
 
-        DemandeConge existingDemandeConge = demandeCongeImpl.getById(id);
-        if (existingDemandeConge == null) {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping("/{id}")
+    public DemandeCongeDTO getDemandeById(@PathVariable Long id) {
+        return demandeCongeInt.getDemandeById(id);
+    }
 
-        demandeCongeImpl.updateDemandeConge(id, demandeConge);
-        return ResponseEntity.ok(demandeConge);
+    @GetMapping
+    public List<DemandeCongeDTO> getAllDemandes() {
+        return demandeCongeInt.getAllDemandes();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDemandeConge(@PathVariable Long id) {
-        demandeCongeImpl.deleteDemandeConge(id);
-        return ResponseEntity.noContent().build();
-
-
+    public ApiResponse deleteDemande(@PathVariable Long id) {
+        return demandeCongeInt.deleteDemande(id);
     }
 }
-

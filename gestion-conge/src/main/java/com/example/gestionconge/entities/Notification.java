@@ -16,6 +16,7 @@ public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idNotification;
+
     private String type;
     private String message;
     private LocalDate date;

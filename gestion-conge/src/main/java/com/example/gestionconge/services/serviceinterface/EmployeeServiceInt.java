@@ -1,16 +1,16 @@
 package com.example.gestionconge.services.serviceinterface;
 
-import com.example.gestionconge.entities.Employe;
+import com.example.gestionconge.dtos.EmployeDTO;
+import com.example.gestionconge.dtos.ApiResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public interface EmployeeServiceInt {
-    Employe getById(Long id);
-    List<Employe> getAllEmployee();
-    Employe createEmployee(Employe employe);
-    void deleteEmployee(Long id);
-    void updateEmployee(Long id,Employe employe);
-
+    ApiResponse addEmploye(EmployeDTO dto);
+    ApiResponse updateEmploye(Long id, EmployeDTO dto);
+    ApiResponse deleteEmploye(Long id);
+    EmployeDTO getEmployeById(Long id);
+    List<EmployeDTO> getAllEmployes();
 }

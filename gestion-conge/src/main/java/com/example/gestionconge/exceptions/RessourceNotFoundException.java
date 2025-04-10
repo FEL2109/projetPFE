@@ -1,8 +1,8 @@
 package com.example.gestionconge.exceptions;
 
-public class ResourceNotFoundException extends RuntimeException {
+public class RessourceNotFoundException extends RuntimeException {
 
-    public ResourceNotFoundException(String message) {
+    public RessourceNotFoundException(String message) {
         super(message);
     }
 }

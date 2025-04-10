@@ -29,5 +29,6 @@ public class Absence {
     @ManyToOne
     @JoinColumn(name = "employe_id", nullable = false)
     private Employe employe;
+
 }
 

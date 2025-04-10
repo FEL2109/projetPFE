@@ -13,10 +13,12 @@ import java.util.List;
 @Setter
 @Builder
 @ToString
+
 public class Employe  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEmployee;
+
     private String nom;
     private String prenom;
     private String email;

@@ -20,7 +20,6 @@ public class SoldeConge {
     private LocalDate annee;
     private Long joursRestants;
 
-
     @OneToOne
     @JoinColumn(name = "employe_id", nullable = false, unique = true)
     private Employe employe;

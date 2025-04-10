@@ -44,6 +44,5 @@ public class DemandeConge {
     @ManyToOne
     @JoinColumn(name = "regle_conge_id", nullable = false)
     private RegleConge regleConge;
-
 }
 

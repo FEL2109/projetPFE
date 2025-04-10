@@ -13,16 +13,17 @@ import java.util.List;
 @Setter
 @ToString
 @Builder
-public class Manager {
 
+public class Manager {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idmanager;
+    private Long idManager;
+
     private String nom;
     private String prenom;
     private String email;
-    private String motdepasse;
+    private String motDePasse;
     private String telephone;
-    private String cheminphoto;
+    private String cheminPhoto;
 
     @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL)
     private List<DemandeConge> demandesGerees = new ArrayList<>();
