@@ -1,10 +1,10 @@
 package com.example.gestionconge.web;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import com.example.gestionconge.dtos.ManagerDTO;
 import com.example.gestionconge.dtos.ApiResponse;
 import com.example.gestionconge.services.serviceinterface.ManagerServiceInt;
-import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
@@ -40,5 +40,9 @@ public class ManagerRestController {
     @GetMapping
     public List<ManagerDTO> getAllManagers() {
         return managerServiceInt.getAllManagers();
+    }
+    @GetMapping("/auth")
+    public Authentication authentication(Authentication authentication) {
+        return authentication;
     }
 }

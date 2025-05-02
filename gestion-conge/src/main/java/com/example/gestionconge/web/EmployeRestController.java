@@ -3,7 +3,7 @@ package com.example.gestionconge.web;
 import com.example.gestionconge.dtos.EmployeDTO;
 import com.example.gestionconge.dtos.ApiResponse;
 import com.example.gestionconge.services.serviceinterface.EmployeeServiceInt;
-import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,6 +40,11 @@ public class EmployeRestController {
     @GetMapping
     public List<EmployeDTO> getAllEmployes() {
         return employeeServiceInt.getAllEmployes();
+    }
+    // pour voir la session d un utilisateur
+    @GetMapping("/auth")
+    public Authentication authentication(Authentication authentication) {
+        return authentication;
     }
 }
 

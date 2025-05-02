@@ -3,14 +3,8 @@ package com.example.gestionconge.web;
 import com.example.gestionconge.dtos.ServiceRHDTO;
 import com.example.gestionconge.dtos.ApiResponse;
 import com.example.gestionconge.services.serviceinterface.ServiceRHServiceInt;
-import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import com.example.gestionconge.dtos.ApiResponse;
-import com.example.gestionconge.dtos.ServiceRHDTO;
-import com.example.gestionconge.services.serviceinterface.ServiceRHServiceInt;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 import java.util.List;
 
@@ -46,6 +40,10 @@ public class ServiceRHRestController {
     @GetMapping
     public List<ServiceRHDTO> getAllServiceRHs() {
         return serviceRHServiceInt.getAllServiceRHs();
+    }
+    @GetMapping("/auth")
+    public Authentication authentication(Authentication authentication) {
+        return authentication;
     }
 }
 

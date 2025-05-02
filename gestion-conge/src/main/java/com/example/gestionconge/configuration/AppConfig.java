@@ -1,4 +1,4 @@
-package com.entreprise.msuser.configuration;
+package com.example.gestionconge.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

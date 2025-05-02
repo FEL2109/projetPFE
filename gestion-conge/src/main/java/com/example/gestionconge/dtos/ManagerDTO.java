@@ -12,8 +12,7 @@ import lombok.*;
 @Builder
 
 public class ManagerDTO {
-    @NotNull
-    private Long idManager;
+
 
     @NotEmpty(message = "nom est requis")
     private String nom;
