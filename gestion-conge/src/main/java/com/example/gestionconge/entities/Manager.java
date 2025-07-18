@@ -25,8 +25,7 @@ public class Manager {
     private String telephone;
     private String cheminPhoto;
 
-    @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL)
-    private List<DemandeConge> demandesGerees = new ArrayList<>();
+
 
     @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL)
     private List<ValidationDemandeConge> validations;

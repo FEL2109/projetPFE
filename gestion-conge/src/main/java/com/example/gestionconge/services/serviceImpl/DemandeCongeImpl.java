@@ -1,6 +1,7 @@
 package com.example.gestionconge.services.serviceImpl;
 
 import com.example.gestionconge.entities.DemandeConge;
+import com.example.gestionconge.entities.Enumm.StatutDemande;
 import com.example.gestionconge.services.serviceinterface.DemandeCongeInt;
 import com.example.gestionconge.dtos.ApiResponse;
 import com.example.gestionconge.dtos.DemandeCongeDTO;
@@ -76,6 +77,29 @@ public class DemandeCongeImpl implements DemandeCongeInt{
         demandes.forEach(demande -> demandeCongeDTOList.add(demandeCongeMapper.toDto(demande)));
 
         return demandeCongeDTOList;
+    }
+
+
+    @Override
+    public boolean accepterDemande(Long idDemande) {
+        DemandeConge demande = demandeCongeRepository.findById(idDemande).orElse(null);
+        if (demande != null && demande.getStatut() == StatutDemande.EnAttente) {
+            demande.setStatut(StatutDemande.Approuvee);
+            demandeCongeRepository.save(demande);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean refuserDemande(Long idDemande) {
+        DemandeConge demande = demandeCongeRepository.findById(idDemande).orElse(null);
+        if (demande != null && demande.getStatut() == StatutDemande.EnAttente) {
+            demande.setStatut(StatutDemande.Refusee);
+            demandeCongeRepository.save(demande);
+            return true;
+        }
+        return false;
     }
 }
 

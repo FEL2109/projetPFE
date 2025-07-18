@@ -40,4 +40,26 @@ public class DemandeCongeRestController {
     public ApiResponse deleteDemande(@PathVariable Long id) {
         return demandeCongeInt.deleteDemande(id);
     }
+
+
+
+    @PutMapping("/{id}/accepter")
+    public ApiResponse accepterDemande(@PathVariable Long id) {
+        boolean result = demandeCongeInt.accepterDemande(id);
+        if (result) {
+            return new ApiResponse(id, "Demande approuvée avec succès.");
+        } else {
+            return new ApiResponse(null, "Impossible d'approuver la demande.");
+        }
+    }
+
+    @PutMapping("/{id}/refuser")
+    public ApiResponse RefuserDemande(@PathVariable Long id) {
+        boolean result = demandeCongeInt.refuserDemande(id);
+        if (result) {
+            return new ApiResponse(id, "Demande refusee avec succès.");
+        } else {
+            return new ApiResponse(null, "Impossible de refuser la demande.");
+        }
+    }
 }

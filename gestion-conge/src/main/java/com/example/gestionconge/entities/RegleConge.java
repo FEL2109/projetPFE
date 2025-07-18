@@ -20,6 +20,5 @@ public class RegleConge {
     private String typeConge;
     private int joursAnnuels;
 
-    @OneToMany(mappedBy = "regleConge", cascade = CascadeType.ALL)
-    private List<DemandeConge> demandes;
+
 }

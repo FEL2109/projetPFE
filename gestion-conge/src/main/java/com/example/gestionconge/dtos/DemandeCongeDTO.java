@@ -1,9 +1,10 @@
 package com.example.gestionconge.dtos;
 
 import com.example.gestionconge.entities.Enumm.StatutDemande;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+
 import java.time.LocalDate;
 
 @NoArgsConstructor
@@ -12,31 +13,27 @@ import java.time.LocalDate;
 @Setter
 @ToString
 @Builder
-
 public class DemandeCongeDTO {
-    @NotNull
+
     private Long idDemande;
 
-    @NotNull
+    @NotNull(message = "La date de début est requise")
     private LocalDate dateDebut;
 
-    @NotNull
+    @NotNull(message = "La date de demande est requise")
     private LocalDate dateDemande;
 
-    @NotNull
-    private int nombreJours;
+    @NotNull(message = "Le nombre de jours est requis")
+    private Integer nombreJours;
 
-    @NotEmpty(message = "statutDemande est requis")
+    @NotNull(message = "Le statut est requis")
     private StatutDemande statut;
 
-    @NotEmpty(message = "commentaire est requis")
+    @NotBlank(message = "Le commentaire est requis")
     private String commentaire;
 
     private Long employeId;
-    private Long managerId;
-    private Long typeCongeId;
-    private Long regleCongeId;
+
+
+
 }
-
-
-

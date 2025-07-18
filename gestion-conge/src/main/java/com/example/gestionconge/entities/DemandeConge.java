@@ -20,7 +20,7 @@ public class DemandeConge {
 
     private LocalDate dateDebut;
 
-    private LocalDate dateDemande;
+    private LocalDate dateFin;
 
     private int nombreJours;
 
@@ -33,16 +33,7 @@ public class DemandeConge {
     @JoinColumn(name = "employe_id", nullable = false)
     private Employe employe;
 
-    @ManyToOne
-    @JoinColumn(name = "manager_id")
-    private Manager manager;
 
-    @ManyToOne
-    @JoinColumn(name = "type_conge_id", nullable = false)
-    private TypeConge typeConge;
 
-    @ManyToOne
-    @JoinColumn(name = "regle_conge_id", nullable = false)
-    private RegleConge regleConge;
 }
 

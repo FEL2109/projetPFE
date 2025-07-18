@@ -13,5 +13,7 @@ public interface DemandeCongeInt {
     ApiResponse deleteDemande(Long id);
     DemandeCongeDTO getDemandeById(Long id);
     List<DemandeCongeDTO> getAllDemandes();
+    public  boolean accepterDemande(Long idDemande);
+    public boolean refuserDemande(Long idDemande);
 }
 
