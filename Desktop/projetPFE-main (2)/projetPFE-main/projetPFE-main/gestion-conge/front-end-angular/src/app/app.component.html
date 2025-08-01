@@ -1,0 +1,7 @@
+<div *ngIf="!isKeycloakInitialized">
+  <p>Chargement de l'authentification...</p>
+</div>
+
+<div *ngIf="isKeycloakInitialized">
+  <app-dashboard-employe></app-dashboard-employe>
+</div>
